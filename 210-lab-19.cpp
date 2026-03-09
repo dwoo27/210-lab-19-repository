@@ -19,18 +19,22 @@ class Movie {
     Node* head;
 
 public: 
-    Movie(string t) {
+    Movie() { //default constructor
+        title = "";
+        head = nullptr;
+    }
+    Movie(string t) { //partial constructor
         title = t;
         head = nullptr;
     }
 
-    string getTitle(); 
-    void addRev(double, string);
-    void outputRevs();
+    string getTitle(); //return title
+    void addRev(double, string); //adds review to linked list
+    void outputRevs(); //outputs reviews 
 };
 
-double randrating();
-void finComments(array<string, NUM_COMMENTS>&);
+double randRating();
+void finComments(array<string, NUM_COMMENTS>&); //reads comments from file and populates array
 
 int main()
 {
@@ -44,7 +48,17 @@ int main()
     movies[2] = Movie("Bullet Train");
     movies[3] = Movie("Mission Impossible");
 
-    
+    int commentIndex = 0; //assigns 3 reviews per movie, ranodm ratings, comments from file
+    for (int i = 0; i < NUM_MOVIES; i++) {
+        for (int j = 0; j < 3; j++) {
+            movies[i].addRev(randRating(), comments[commentIndex++]);
+        }
+    }
+
+    for (int i = 0; i < NUM_MOVIES; i++) {
+        movies[i].outputRevs();
+        cout << endl;
+    }
 
 
 }
@@ -87,7 +101,7 @@ void Movie::outputRevs() {
     cout << "\t> Average: " << (total / count) << endl;
 }
 
-double randrating() {
+double randRating() {
     return(rand() % 41 + 10) / 10.0; // rand()%(max-min+1) + min
 }
 
