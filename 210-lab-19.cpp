@@ -31,6 +31,7 @@ public:
     string getTitle(); //return title
     void addRev(double, string); //adds review to linked list
     void outputRevs(); //outputs reviews 
+
 };
 
 double randRating();
@@ -44,7 +45,7 @@ int main()
 
     array<Movie, NUM_MOVIES> movies; //array of 4 movie objects
     movies[0] = Movie("Nemo");
-    movies[2] = Movie("Star Wars");
+    movies[1] = Movie("Star Wars");
     movies[2] = Movie("Bullet Train");
     movies[3] = Movie("Mission Impossible");
 
@@ -56,6 +57,7 @@ int main()
     }
 
     for (int i = 0; i < NUM_MOVIES; i++) {
+        cout << "Title: " << movies[i].getTitle() << endl;
         movies[i].outputRevs();
         cout << endl;
     }
