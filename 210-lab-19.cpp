@@ -39,7 +39,12 @@ int main()
     finComments(comments);
 
     array<Movie, NUM_MOVIES> movies; //array of 4 movie objects
+    movies[0] = Movie("Nemo");
+    movies[2] = Movie("Star Wars");
+    movies[2] = Movie("Bullet Train");
+    movies[3] = Movie("Mission Impossible");
 
+    
 
 
 }
