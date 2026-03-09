@@ -56,7 +56,7 @@ int main()
         }
     }
 
-    for (int i = 0; i < NUM_MOVIES; i++) {
+    for (int i = 0; i < NUM_MOVIES; i++) { //outputs all movies and their reviews
         cout << "Title: " << movies[i].getTitle() << endl;
         movies[i].outputRevs();
         cout << endl;
@@ -107,7 +107,7 @@ double randRating() {
     return(rand() % 41 + 10) / 10.0; // rand()%(max-min+1) + min
 }
 
-void finComments(array<string, NUM_COMMENTS>& comments) {
+void finComments(array<string, NUM_COMMENTS>& comments) { //read comments from fill and populate array
     ifstream fin;
     fin.open("comments.txt");
     string buf;
