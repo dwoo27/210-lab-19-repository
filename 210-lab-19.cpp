@@ -5,6 +5,7 @@
 #include <ctime>
 using namespace std;
 
+const int NUM_COMMENTS = 12;
 struct Node {
     double rating;
     string comment;
@@ -21,8 +22,12 @@ public:
     }
 
     string getTitle(); 
-
+    void addRev(double, string);
+    void outputRevs();
 };
+
+double randrating();
+void finComments(array<string, NUM_COMMENTS>&);
 int main()
 {
     std::cout << "Hello World!\n";
