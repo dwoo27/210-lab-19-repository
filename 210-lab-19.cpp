@@ -6,6 +6,8 @@
 using namespace std;
 
 const int NUM_COMMENTS = 12;
+const int NUM_MOVIES = 4;
+
 struct Node {
     double rating;
     string comment;
@@ -19,6 +21,7 @@ class Movie {
 public: 
     Movie(string t) {
         title = t;
+        head = nullptr;
     }
 
     string getTitle(); 
@@ -31,14 +34,21 @@ void finComments(array<string, NUM_COMMENTS>&);
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    srand(time(0)); //seeds random number generator
+    array<string, NUM_COMMENTS> comments; //declare array and populate
+    finComments(comments);
+
+    array<Movie, NUM_MOVIES> movies; //array of 4 movie objects
+
+
+
 }
 
-string getTitle(){
+string Movie::getTitle(){
     return title;
 }
 
-void addRev(double rating, string comment) {
+void Movie::addRev(double rating, string comment) {
     Node* newReview = new Node;
     newReview->rating = rating;
     newReview->comment = comment;
@@ -52,7 +62,7 @@ void addRev(double rating, string comment) {
         head = newReview;
     }
 }
-void outputRevs() {
+void Movie::outputRevs() {
     if (!head) { //check for empty list
         cout << "No reviews" << endl;
         return;
@@ -74,4 +84,19 @@ void outputRevs() {
 
 double randrating() {
     return(rand() % 41 + 10) / 10.0; // rand()%(max-min+1) + min
+}
+
+void finComments(array<string, NUM_COMMENTS>& comments) {
+    ifstream fin;
+    fin.open("comments.txt");
+    string buf;
+    if (fin.good()) {
+        for (int i = 0; i < NUM_COMMENTS; i++) {
+            getline(fin, comments[i]);
+        }
+        fin.close();
+    }
+    else {
+        cout << "File not found" << endl;
+    }
 }
